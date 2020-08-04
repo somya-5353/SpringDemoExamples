@@ -1,8 +1,8 @@
 package com.example.SpringDemoExamples;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class Controller {
@@ -26,4 +26,17 @@ public class Controller {
     public String getContinent(@RequestParam String c) {
        return db.getContinent(c);
     }
+
+    //get api to fetch all the users
+    @GetMapping("/fetch_users")
+    public List<User> getAllUsers() {
+       return db.getAllUsers();
+    }
+
+    //post api for onboarding a new user
+    @PostMapping("/create_user")
+    public boolean addUser(@RequestBody User u) {
+       return  db.addUser(u);
+    }
+
 }
